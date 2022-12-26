@@ -29,8 +29,6 @@ class MedicineCountAdapter(val event : AdapterItemClickListener) : ListAdapter<M
 
 ) {
 
-     var totalAmount : Int = 0
-
     class MyViewHolder(val binding : ItemMedicineListBinding, val listener : AdapterItemClickListener) : RecyclerView.ViewHolder(binding.root) {
 
         lateinit var getCurrentItem : MedicineDetail
@@ -75,11 +73,6 @@ class MedicineCountAdapter(val event : AdapterItemClickListener) : ListAdapter<M
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = getItem(position)
         holder.bind(currentItem)
-
-        totalAmount += currentItem.price * currentItem.count
-        Log.d("Adapterchanges", totalAmount.toString())
-
-        holder.listener.totalAmount(totalAmount)
     }
 
 }
@@ -92,7 +85,7 @@ interface AdapterItemClickListener{
 
     fun checkListener() : Boolean
 
-    fun totalAmount(total : Int){
+    fun totalAmount(total : MedicineDetail){
 
     }
 

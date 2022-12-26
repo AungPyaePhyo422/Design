@@ -44,9 +44,8 @@ class MainActivity : AppCompatActivity() {
                 return select
             }
 
-            override fun totalAmount(total: Int) {
-                tot = total
-                binding.tvTotalPrice.text = tot.toString() + " MMK"
+            override fun totalAmount(total: MedicineDetail) {
+                tot = total.count * total.price
             }
         }
     )
@@ -79,7 +78,6 @@ class MainActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = adapterr
         }
-
 
         binding.tvTotalPrice.text = tot.toString()
 
